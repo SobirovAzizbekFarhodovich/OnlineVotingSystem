@@ -4,6 +4,7 @@ import (
 	"github.com/GO/49-dars/API_Gateway/api/handler"
 
 	"github.com/gin-gonic/gin"
+	_ "github.com/GO/49-dars/API_Gateway/docs"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )

@@ -1,0 +1,397 @@
+definitions:
+  voting.ByIdPartyRequest:
+    properties:
+      id:
+        type: string
+    type: object
+  voting.ByIdPublicRequest:
+    properties:
+      id:
+        type: string
+    type: object
+  voting.CreatePartyRequest:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      opened_date:
+        type: string
+      slogan:
+        type: string
+    type: object
+  voting.CreatePublicRequest:
+    properties:
+      birthday:
+        type: string
+      first_name:
+        type: string
+      gender:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      nation:
+        type: string
+      party_id:
+        type: string
+    type: object
+  voting.FilterPartyRequest:
+    properties:
+      limit:
+        type: integer
+      offset:
+        type: integer
+    type: object
+  voting.FilterPublicRequest:
+    properties:
+      limit:
+        type: integer
+      offset:
+        type: integer
+    type: object
+  voting.GetAllPartyResponse:
+    properties:
+      parties:
+        items:
+          $ref: '#/definitions/voting.GetPartyResponse'
+        type: array
+    type: object
+  voting.GetAllPublicResponse:
+    properties:
+      publics:
+        items:
+          $ref: '#/definitions/voting.GetPublicResponse'
+        type: array
+    type: object
+  voting.GetPartyResponse:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      opened_date:
+        type: string
+      slogan:
+        type: string
+    type: object
+  voting.GetPublicResponse:
+    properties:
+      birthday:
+        type: string
+      first_name:
+        type: string
+      gender:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      nation:
+        type: string
+      party_id:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /party:
+    get:
+      consumes:
+      - application/json
+      description: GetAll
+      parameters:
+      - description: Party GetAll request payload
+        in: body
+        name: party
+        required: true
+        schema:
+          $ref: '#/definitions/voting.FilterPartyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Get All party
+          schema:
+            $ref: '#/definitions/voting.GetAllPartyResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Get All party
+          schema:
+            type: string
+      summary: GetAllParties
+      tags:
+      - Party
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for creating a new parties
+      parameters:
+      - description: Party creation request payload
+        in: body
+        name: party
+        required: true
+        schema:
+          $ref: '#/definitions/voting.CreatePartyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully created party
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create party
+          schema:
+            type: string
+      summary: Create Parties
+      tags:
+      - Party
+    put:
+      consumes:
+      - application/json
+      description: Update Party elements
+      parameters:
+      - description: Party Update request payload
+        in: body
+        name: party
+        required: true
+        schema:
+          $ref: '#/definitions/voting.GetPartyResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Update party
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Update party
+          schema:
+            type: string
+      summary: Update Party
+      tags:
+      - Party
+  /party/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Party elements
+      parameters:
+      - description: Party Delete request payload
+        in: body
+        name: party
+        required: true
+        schema:
+          $ref: '#/definitions/voting.ByIdPartyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Delete party
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Delete party
+          schema:
+            type: string
+      summary: Delete Party
+      tags:
+      - Party
+    get:
+      consumes:
+      - application/json
+      description: GetAll
+      parameters:
+      - description: Party GetById request payload
+        in: body
+        name: party
+        required: true
+        schema:
+          $ref: '#/definitions/voting.ByIdPartyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Get All party
+          schema:
+            $ref: '#/definitions/voting.GetPartyResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Get All party
+          schema:
+            type: string
+      summary: GetByIdParty
+      tags:
+      - Party
+  /public:
+    get:
+      consumes:
+      - application/json
+      description: Get All Public
+      parameters:
+      - description: GetAllPublic
+        in: body
+        name: public
+        required: true
+        schema:
+          $ref: '#/definitions/voting.FilterPublicRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Get All Public
+          schema:
+            $ref: '#/definitions/voting.GetAllPublicResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Get All public
+          schema:
+            type: string
+      summary: Get All Public
+      tags:
+      - Public
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for creating a new Public
+      parameters:
+      - description: Public create
+        in: body
+        name: public
+        required: true
+        schema:
+          $ref: '#/definitions/voting.CreatePublicRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully created public
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create public
+          schema:
+            type: string
+      summary: Create Public
+      tags:
+      - Public
+    put:
+      consumes:
+      - application/json
+      description: Update Public
+      parameters:
+      - description: UpdatePublic
+        in: body
+        name: public
+        required: true
+        schema:
+          $ref: '#/definitions/voting.GetPublicResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Update Public
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Update public
+          schema:
+            type: string
+      summary: Update Public
+      tags:
+      - Public
+  /public/:id:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Public
+      parameters:
+      - description: DeletePublic
+        in: body
+        name: public
+        required: true
+        schema:
+          $ref: '#/definitions/voting.ByIdPublicRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Delete Public
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Delete public
+          schema:
+            type: string
+      summary: Delete Public
+      tags:
+      - Public
+    get:
+      consumes:
+      - application/json
+      description: Get Public
+      parameters:
+      - description: Get Public
+        in: body
+        name: public
+        required: true
+        schema:
+          $ref: '#/definitions/voting.ByIdPublicRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully Get Public
+          schema:
+            $ref: '#/definitions/voting.GetPublicResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to Get public
+          schema:
+            type: string
+      summary: Get Public
+      tags:
+      - Public
+swagger: "2.0"
