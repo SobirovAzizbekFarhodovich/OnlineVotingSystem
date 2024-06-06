@@ -83,7 +83,7 @@ func (u *PublicRepo) Update(public *pb.GetPublicResponse)(*pb.VoidPublicResponse
 		id = $7
 	`
 
-	_, err := u.db.Exec(query,public.GetFirstName(),public.GetLastName(),public.GetBirthday(),public.GetGender(),public.GetNation(),public.GetPartyId())
+	_, err := u.db.Exec(query,public.GetFirstName(),public.GetLastName(),public.GetBirthday(),public.GetGender(),public.GetNation(),public.GetPartyId(),public.GetId())
 
 	return nil, err
 }
