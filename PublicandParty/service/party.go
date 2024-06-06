@@ -18,15 +18,15 @@ func NewPartyService(stg *postgres.Storage) *PartyService {
 }
 
 func (ps *PartyService) CreateParty(ctx context.Context, party *pb.CreatePartyRequest) (*pb.VoidPartyResponse, error) {
-	res, err := ps.stg.Party().Create(party)
+	err := ps.stg.Party().Create(party)
 	if err != nil {
 		return nil, err
 	}
 
-	return res, err
+	return nil, nil
 }
 
-func (ps *PartyService) GetByIdParty(ctx context.Context, party *pb.ByIdPartyRequest) (*pb.GetPartyResponse, error) {
+func (ps *PartyService) GetPartyById(ctx context.Context, party *pb.ByIdPartyRequest) (*pb.GetPartyResponse, error) {
 	res, err := ps.stg.Party().GetById((*pb.ByIdPartyRequest)(party))
 	if err != nil {
 		log.Fatal(err.Error())
@@ -35,7 +35,7 @@ func (ps *PartyService) GetByIdParty(ctx context.Context, party *pb.ByIdPartyReq
 	return res, err
 }
 
-func (ps *PartyService) GetAllParty(ctx context.Context, party *pb.FilterPartyRequest) (*pb.GetAllPartyResponse, error) {
+func (ps *PartyService) GetAllParties(ctx context.Context, party *pb.FilterPartyRequest) (*pb.GetAllPartyResponse, error) {
 	res, err := ps.stg.Party().GetAll((*pb.FilterPartyRequest)(party))
 	if err != nil {
 		return nil, err

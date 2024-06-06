@@ -42,7 +42,7 @@ func TestCreateParty(t *testing.T) {
 		Description: party.Description,
 	}
 
-	_, err := db.Create(&TestParty)
+	err := db.Create(&TestParty)
 	if err != nil {
 		t.Fatalf("Failed to create party: %v", err)
 	}
@@ -57,56 +57,55 @@ func TestCreateParty(t *testing.T) {
 	assert.Equal(t, party.Id, idRes.Id)
 }
 
-func TestDeleteParty(t *testing.T) {    
+func TestDeleteParty(t *testing.T) {
 
-  db := ConnectParty(t)
-  party := CreateParty()
-  TestParty := g.CreatePartyRequest{
-    Id:         party.Id,
-    Name:       party.Name,
-    Slogan:     party.Slogan,
-    OpenedDate: party.OpenedDate,
-    Description: party.Description,
-  }
+	db := ConnectParty(t)
+	party := CreateParty()
+	TestParty := g.CreatePartyRequest{
+		Id:          party.Id,
+		Name:        party.Name,
+		Slogan:      party.Slogan,
+		OpenedDate:  party.OpenedDate,
+		Description: party.Description,
+	}
 
-  _, err := db.Create(&TestParty)
-  if err != nil {
-    t.Fatalf("Error creating party: %v", err)
-  }
+	err := db.Create(&TestParty)
+	if err != nil {
+		t.Fatalf("Error creating party: %v", err)
+	}
 
-  deleteReq := g.ByIdPartyRequest{Id: party.Id}
-  _, err = db.Delete(&deleteReq)
-  if err != nil {
-    t.Fatalf("Error deleting party: %v", err)
-  }
+	deleteReq := g.ByIdPartyRequest{Id: party.Id}
+	_, err = db.Delete(&deleteReq)
+	if err != nil {
+		t.Fatalf("Error deleting party: %v", err)
+	}
 
-  _, err = db.GetById(&g.ByIdPartyRequest{Id: party.Id})
-  if err == nil {
-    t.Fatalf("Party should have been deleted")
-  }
+	_, err = db.GetById(&g.ByIdPartyRequest{Id: party.Id})
+	if err == nil {
+		t.Fatalf("Party should have been deleted")
+	}
 }
 
 func TestGetAllParties(t *testing.T) {
-  db := ConnectParty(t)
-  party := CreateParty()
-  TestParty := g.CreatePartyRequest{
-    Id:         party.Id,
-    Name:       party.Name,
-    Slogan:     party.Slogan,
-    OpenedDate: party.OpenedDate,
-    Description: party.Description, 
-    
-  }
+	db := ConnectParty(t)
+	party := CreateParty()
+	TestParty := g.CreatePartyRequest{
+		Id:          party.Id,
+		Name:        party.Name,
+		Slogan:      party.Slogan,
+		OpenedDate:  party.OpenedDate,
+		Description: party.Description,
+	}
 
-  _, err := db.Create(&TestParty)
-  if err != nil {
-    t.Fatalf("Error creating party: %v", err)
-  }
+	err := db.Create(&TestParty)
+	if err != nil {
+		t.Fatalf("Error creating party: %v", err)
+	}
 
-  res, err := db.GetAll(&g.FilterPartyRequest{})
-  if err != nil {
-    t.Fatalf("Error getting all parties: %v", err)
-  }
+	res, err := db.GetAll(&g.FilterPartyRequest{})
+	if err != nil {
+		t.Fatalf("Error getting all parties: %v", err)
+	}
 
-  assert.Equal(t, 1, len(res.Parties))
+	assert.Equal(t, 1, len(res.Parties))
 }

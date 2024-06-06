@@ -2,6 +2,9 @@ package postgres
 
 import (
 	"database/sql"
+	"fmt"
+	"log"
+	"time"
 	pb "vote/genproto/genproto/voting"
 
 	"github.com/google/uuid"
@@ -14,16 +17,24 @@ type PartyRepo struct {
 func NewPartyRepo(db *sql.DB) *PartyRepo {
 	return &PartyRepo{db: db}
 }
-func (u *PartyRepo) Create(party *pb.CreatePartyRequest) (*pb.VoidPartyResponse, error) {
+func (u *PartyRepo) Create(party *pb.CreatePartyRequest) error {
 	party.Id = uuid.NewString()
 	query :=
 		`
-	INSERT INTO party(id,name,slogan,opened_date,description) VALUES ($1,$2,$3,$4,$5)
+	INSERT INTO party (id,name,slogan,opened_date,description) VALUES ($1,$2,$3,$4,$5)
 	`
+	date, err := time.Parse("2006-01-02", party.OpenedDate)
+	if err != nil {
+		return fmt.Errorf("invalide %v", err)
+	}
 
-	_, err := u.db.Exec(query, party.Id, party.Name, party.Slogan, party.OpenedDate, party.Description)
+	_, err = u.db.Exec(query, party.Id, party.Name, party.Slogan, date, party.Description)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
 
-	return nil, err
+	return nil
 }
 
 func (u *PartyRepo) GetById(id *pb.ByIdPartyRequest) (*pb.GetPartyResponse, error) {
@@ -77,12 +88,16 @@ func (u *PartyRepo) Update(party *pb.GetPartyResponse) (*pb.VoidPartyResponse, e
 		name = $1,
 		slogan = $2,
 		opened_date = $3,
-		description = $4,
+		description = $4
 	where 
 		id = $5
 	`
+	date, err := time.Parse("2006-01-02", party.OpenedDate)
+	if err != nil {
+		return nil, fmt.Errorf("invalide %v", err)
+	}
 
-	_, err := u.db.Exec(query, party.GetName(), party.GetSlogan(), party.GetOpenedDate(), party.GetDescription(), party.GetId())
+	_, err = u.db.Exec(query, party.GetName(), party.GetSlogan(), date, party.GetDescription(), party.GetId())
 	if err != nil {
 		return nil, err
 	}
@@ -97,8 +112,8 @@ func (u *PartyRepo) Delete(id *pb.ByIdPartyRequest) (*pb.VoidPartyResponse, erro
 		`
 
 	_, err := u.db.Exec(query, id.GetId())
-	if err != nil{
-		return nil, err
+	if err != nil {
+		return nil,err
 	}
 	return &pb.VoidPartyResponse{}, nil
 }
