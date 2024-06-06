@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "genproto/voting/";
+
+package voting;
+
+service PartyService {
+    rpc CreateParty(CreatePartyRequest) returns (VoidPartyResponse) {}
+    rpc GetPartyById(ByIdPartyRequest) returns (GetPartyResponse) {}
+    rpc GetAllParties(FilterPartyRequest) returns (GetAllPartyResponse) {}
+    rpc UpdateParty(GetPartyResponse) returns (VoidPartyResponse) {}
+    rpc DeleteParty(ByIdPartyRequest) returns (VoidPartyResponse) {}
+}
+
+message CreatePartyRequest {
+    string id          = 1;
+    string name        = 2;
+    string slogan      = 3;
+    string opened_date = 4;
+    string description = 5;
+}
+
+
+message GetPartyResponse {
+    string id          = 1;
+    string name        = 2;
+    string slogan      = 3;
+    string opened_date = 4;
+    string description = 5;
+}
+
+message GetAllPartyResponse {
+    repeated GetPartyResponse parties = 1;
+}
+
+message UpdatePartyRequest {
+    string name        = 1;
+    string slogan      = 2;
+    string opened_date = 3;
+    string description = 4;
+}
+
+message ByIdPartyRequest {
+    string id = 1;
+}
+
+message VoidPartyResponse {}    
+
+message FilterPartyRequest {
+    int32 limit  = 1;
+    int32 offset = 2;
+}
