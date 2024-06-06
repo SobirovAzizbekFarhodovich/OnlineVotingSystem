@@ -1,0 +1,720 @@
+definitions:
+  genproto.Candidate:
+    properties:
+      election_id:
+        type: string
+      id:
+        type: string
+      party_id:
+        type: string
+      public_id:
+        type: string
+    type: object
+  genproto.CreateCandidateRequest:
+    properties:
+      election_id:
+        type: string
+      id:
+        type: string
+      party_id:
+        type: string
+      public_id:
+        type: string
+    type: object
+  genproto.CreatePartyRequest:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      opened_date:
+        type: string
+      slogan:
+        type: string
+    type: object
+  genproto.CreatePublicVoteReq:
+    properties:
+      candidate_id:
+        type: string
+      election_id:
+        type: string
+      id:
+        type: string
+      public_id:
+        type: string
+    type: object
+  genproto.Election:
+    properties:
+      date:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  genproto.GetAllCandidate:
+    properties:
+      election:
+        $ref: '#/definitions/genproto.Election'
+      id:
+        type: string
+      party_id:
+        type: string
+      public_id:
+        type: string
+    type: object
+  genproto.GetAllCandidatesResponse:
+    properties:
+      candidates:
+        items:
+          $ref: '#/definitions/genproto.GetAllCandidate'
+        type: array
+    type: object
+  genproto.GetAllElectionsResponse:
+    properties:
+      elections:
+        items:
+          $ref: '#/definitions/genproto.Election'
+        type: array
+    type: object
+  genproto.GetAllPartyResponse:
+    properties:
+      parties:
+        items:
+          $ref: '#/definitions/genproto.GetPartyResponse'
+        type: array
+    type: object
+  genproto.GetByIdCandidateResponse:
+    properties:
+      candidate:
+        $ref: '#/definitions/genproto.GetAllCandidate'
+    type: object
+  genproto.GetElectionResponse:
+    properties:
+      election:
+        $ref: '#/definitions/genproto.Election'
+    type: object
+  genproto.GetPartyResponse:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      opened_date:
+        type: string
+      slogan:
+        type: string
+    type: object
+  genproto.GetPublicVoteResponse:
+    properties:
+      public_vote:
+        items:
+          $ref: '#/definitions/genproto.PublicVote'
+        type: array
+    type: object
+  genproto.PublicVote:
+    properties:
+      election:
+        $ref: '#/definitions/genproto.Election'
+      id:
+        type: string
+      public_id:
+        type: string
+    type: object
+  genproto.UpdateCandidateRequest:
+    properties:
+      candidate:
+        $ref: '#/definitions/genproto.Candidate'
+    type: object
+  genproto.UpdateElectionRequest:
+    properties:
+      election:
+        $ref: '#/definitions/genproto.Election'
+    type: object
+  genproto.UpdatePartyRequest:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      opened_date:
+        type: string
+      slogan:
+        type: string
+    type: object
+  genproto.UpdatePublicVoteRequest:
+    properties:
+      public_vote:
+        $ref: '#/definitions/genproto.CreatePublicVoteReq'
+    type: object
+info:
+  contact: {}
+paths:
+  /candidate:
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for creating a new Candidate
+      parameters:
+      - description: Candidate create
+        in: body
+        name: candidate
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.CreateCandidateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully created Candidate
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create Candidate
+          schema:
+            type: string
+      summary: Create Candidate
+      tags:
+      - Candidate
+    put:
+      consumes:
+      - application/json
+      description: Endpoint for updating a Candidate
+      parameters:
+      - description: Update Candidate
+        in: body
+        name: candidate
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdateCandidateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully updated Candidate
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to update Candidate
+          schema:
+            type: string
+      summary: Update Candidate
+      tags:
+      - Candidate
+  /candidate/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Endpoint for deleting a Candidate
+      parameters:
+      - description: Candidate ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully deleted Candidate
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to delete Candidate
+          schema:
+            type: string
+      summary: Delete Candidate
+      tags:
+      - Candidate
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for getting a Candidate by ID
+      parameters:
+      - description: Candidate ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched Candidate
+          schema:
+            $ref: '#/definitions/genproto.GetByIdCandidateResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to get Candidate
+          schema:
+            type: string
+      summary: Get Candidate by ID
+      tags:
+      - Candidate
+  /candidates:
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for getting all Candidates
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched Candidates
+          schema:
+            $ref: '#/definitions/genproto.GetAllCandidatesResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to get Candidates
+          schema:
+            type: string
+      summary: Get All Candidates
+      tags:
+      - Candidate
+  /election:
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for creating a new Election
+      parameters:
+      - description: Election create
+        in: body
+        name: election
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.Election'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully created Election
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create Election
+          schema:
+            type: string
+      summary: Create Election
+      tags:
+      - Election
+    put:
+      consumes:
+      - application/json
+      description: Endpoint for updating an Election
+      parameters:
+      - description: Update Election
+        in: body
+        name: election
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdateElectionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully updated Election
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to update Election
+          schema:
+            type: string
+      summary: Update Election
+      tags:
+      - Election
+  /election/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Endpoint for deleting an Election
+      parameters:
+      - description: Election ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully deleted Election
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to delete Election
+          schema:
+            type: string
+      summary: Delete Election
+      tags:
+      - Election
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for getting an Election by ID
+      parameters:
+      - description: Election ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched Election
+          schema:
+            $ref: '#/definitions/genproto.GetElectionResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to get Election
+          schema:
+            type: string
+      summary: Get Election by ID
+      tags:
+      - Election
+  /elections:
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for getting all Elections
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched Elections
+          schema:
+            $ref: '#/definitions/genproto.GetAllElectionsResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to get Elections
+          schema:
+            type: string
+      summary: Get Elections
+      tags:
+      - Election
+  /parties:
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for fetching all parties
+      parameters:
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched all parties
+          schema:
+            $ref: '#/definitions/genproto.GetAllPartyResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to fetch all parties
+          schema:
+            type: string
+      summary: Get All Parties
+      tags:
+      - Party
+  /party:
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for creating a new party
+      parameters:
+      - description: Party creation request payload
+        in: body
+        name: party
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.CreatePartyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully created party
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create party
+          schema:
+            type: string
+      summary: Create Parties
+      tags:
+      - Party
+    put:
+      consumes:
+      - application/json
+      description: Endpoint for updating a party
+      parameters:
+      - description: Party Update request payload
+        in: body
+        name: party
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdatePartyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully updated party
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to update party
+          schema:
+            type: string
+      summary: Update Party
+      tags:
+      - Party
+  /party/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Endpoint for deleting a party
+      parameters:
+      - description: Party ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully deleted party
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to delete party
+          schema:
+            type: string
+      summary: Delete Party
+      tags:
+      - Party
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for fetching a party by ID
+      parameters:
+      - description: Party ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched party
+          schema:
+            $ref: '#/definitions/genproto.GetPartyResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to fetch party
+          schema:
+            type: string
+      summary: Get Party by ID
+      tags:
+      - Party
+  /publicvote:
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for creating a new Public Vote
+      parameters:
+      - description: Public Vote create
+        in: body
+        name: publicvote
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.CreatePublicVoteReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully created Public Vote
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to create Public Vote
+          schema:
+            type: string
+      summary: Create Public Vote
+      tags:
+      - PublicVote
+    put:
+      consumes:
+      - application/json
+      description: Endpoint for updating a Public Vote
+      parameters:
+      - description: Update Public Vote
+        in: body
+        name: publicvote
+        required: true
+        schema:
+          $ref: '#/definitions/genproto.UpdatePublicVoteRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully updated Public Vote
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to update Public Vote
+          schema:
+            type: string
+      summary: Update Public Vote
+      tags:
+      - PublicVote
+  /publicvote/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Endpoint for deleting a Public Vote
+      parameters:
+      - description: Public Vote ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully deleted Public Vote
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to delete Public Vote
+          schema:
+            type: string
+      summary: Delete Public Vote
+      tags:
+      - PublicVote
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for getting a Public Vote by ID
+      parameters:
+      - description: Public Vote ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched Public Vote
+          schema:
+            $ref: '#/definitions/genproto.PublicVote'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to get Public Vote
+          schema:
+            type: string
+      summary: Get Public Vote by ID
+      tags:
+      - PublicVote
+  /publicvotes:
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for getting all Public Votes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully fetched Public Votes
+          schema:
+            $ref: '#/definitions/genproto.GetPublicVoteResponse'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Failed to get Public Votes
+          schema:
+            type: string
+      summary: Get All Public Votes
+      tags:
+      - PublicVote
+swagger: "2.0"
