@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: public.proto
+// source: Public.proto
 
 package genproto
 
@@ -245,5 +245,5 @@ var PublicService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "public.proto",
+	Metadata: "Public.proto",
 }

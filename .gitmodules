@@ -1,0 +1,9 @@
+[submodule "public/SubModul"]
+	path = public/SubModul
+	url = git@github.com:IsakovDiyorbek/SubModul.git
+[submodule "Voting/SubModul"]
+	path = Voting/SubModul
+	url = git@github.com:IsakovDiyorbek/SubModul.git
+[submodule "api/SubModul"]
+	path = api/SubModul
+	url = git@github.com:IsakovDiyorbek/SubModul.git

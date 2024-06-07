@@ -16,5 +16,5 @@ mig-create:
 mig-insert:
 	migrate create -ext sql -dir db/migrations -seq insert_table
 
-swag-init:
-	swag init -g api/api.go -o api/docs
+swag-init:s
+	swag init -g api/api.go -o api/doc

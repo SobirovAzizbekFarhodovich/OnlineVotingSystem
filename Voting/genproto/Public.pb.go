@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v3.21.12
-// source: public.proto
+// source: Public.proto
 
 package genproto
 
@@ -37,7 +37,7 @@ type CreatePublicRequest struct {
 func (x *CreatePublicRequest) Reset() {
 	*x = CreatePublicRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_public_proto_msgTypes[0]
+		mi := &file_Public_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -50,7 +50,7 @@ func (x *CreatePublicRequest) String() string {
 func (*CreatePublicRequest) ProtoMessage() {}
 
 func (x *CreatePublicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_public_proto_msgTypes[0]
+	mi := &file_Public_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +63,7 @@ func (x *CreatePublicRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePublicRequest.ProtoReflect.Descriptor instead.
 func (*CreatePublicRequest) Descriptor() ([]byte, []int) {
-	return file_public_proto_rawDescGZIP(), []int{0}
+	return file_Public_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreatePublicRequest) GetId() string {
@@ -124,7 +124,7 @@ type VoidPublicResponse struct {
 func (x *VoidPublicResponse) Reset() {
 	*x = VoidPublicResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_public_proto_msgTypes[1]
+		mi := &file_Public_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -137,7 +137,7 @@ func (x *VoidPublicResponse) String() string {
 func (*VoidPublicResponse) ProtoMessage() {}
 
 func (x *VoidPublicResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_public_proto_msgTypes[1]
+	mi := &file_Public_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -150,7 +150,7 @@ func (x *VoidPublicResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VoidPublicResponse.ProtoReflect.Descriptor instead.
 func (*VoidPublicResponse) Descriptor() ([]byte, []int) {
-	return file_public_proto_rawDescGZIP(), []int{1}
+	return file_Public_proto_rawDescGZIP(), []int{1}
 }
 
 type ByIdPublicRequest struct {
@@ -164,7 +164,7 @@ type ByIdPublicRequest struct {
 func (x *ByIdPublicRequest) Reset() {
 	*x = ByIdPublicRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_public_proto_msgTypes[2]
+		mi := &file_Public_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -177,7 +177,7 @@ func (x *ByIdPublicRequest) String() string {
 func (*ByIdPublicRequest) ProtoMessage() {}
 
 func (x *ByIdPublicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_public_proto_msgTypes[2]
+	mi := &file_Public_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -190,7 +190,7 @@ func (x *ByIdPublicRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ByIdPublicRequest.ProtoReflect.Descriptor instead.
 func (*ByIdPublicRequest) Descriptor() ([]byte, []int) {
-	return file_public_proto_rawDescGZIP(), []int{2}
+	return file_Public_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ByIdPublicRequest) GetId() string {
@@ -217,7 +217,7 @@ type GetPublicResponse struct {
 func (x *GetPublicResponse) Reset() {
 	*x = GetPublicResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_public_proto_msgTypes[3]
+		mi := &file_Public_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -230,7 +230,7 @@ func (x *GetPublicResponse) String() string {
 func (*GetPublicResponse) ProtoMessage() {}
 
 func (x *GetPublicResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_public_proto_msgTypes[3]
+	mi := &file_Public_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -243,7 +243,7 @@ func (x *GetPublicResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPublicResponse.ProtoReflect.Descriptor instead.
 func (*GetPublicResponse) Descriptor() ([]byte, []int) {
-	return file_public_proto_rawDescGZIP(), []int{3}
+	return file_Public_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetPublicResponse) GetId() string {
@@ -311,7 +311,7 @@ type UpdatePublicRequest struct {
 func (x *UpdatePublicRequest) Reset() {
 	*x = UpdatePublicRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_public_proto_msgTypes[4]
+		mi := &file_Public_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -324,7 +324,7 @@ func (x *UpdatePublicRequest) String() string {
 func (*UpdatePublicRequest) ProtoMessage() {}
 
 func (x *UpdatePublicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_public_proto_msgTypes[4]
+	mi := &file_Public_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -337,7 +337,7 @@ func (x *UpdatePublicRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePublicRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePublicRequest) Descriptor() ([]byte, []int) {
-	return file_public_proto_rawDescGZIP(), []int{4}
+	return file_Public_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UpdatePublicRequest) GetFirstName() string {
@@ -394,7 +394,7 @@ type FilterPublicRequest struct {
 func (x *FilterPublicRequest) Reset() {
 	*x = FilterPublicRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_public_proto_msgTypes[5]
+		mi := &file_Public_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -407,7 +407,7 @@ func (x *FilterPublicRequest) String() string {
 func (*FilterPublicRequest) ProtoMessage() {}
 
 func (x *FilterPublicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_public_proto_msgTypes[5]
+	mi := &file_Public_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -420,7 +420,7 @@ func (x *FilterPublicRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterPublicRequest.ProtoReflect.Descriptor instead.
 func (*FilterPublicRequest) Descriptor() ([]byte, []int) {
-	return file_public_proto_rawDescGZIP(), []int{5}
+	return file_Public_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *FilterPublicRequest) GetLimit() int32 {
@@ -448,7 +448,7 @@ type GetAllPublicResponse struct {
 func (x *GetAllPublicResponse) Reset() {
 	*x = GetAllPublicResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_public_proto_msgTypes[6]
+		mi := &file_Public_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -461,7 +461,7 @@ func (x *GetAllPublicResponse) String() string {
 func (*GetAllPublicResponse) ProtoMessage() {}
 
 func (x *GetAllPublicResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_public_proto_msgTypes[6]
+	mi := &file_Public_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -474,7 +474,7 @@ func (x *GetAllPublicResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllPublicResponse.ProtoReflect.Descriptor instead.
 func (*GetAllPublicResponse) Descriptor() ([]byte, []int) {
-	return file_public_proto_rawDescGZIP(), []int{6}
+	return file_Public_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetAllPublicResponse) GetPublics() []*GetPublicResponse {
@@ -484,10 +484,10 @@ func (x *GetAllPublicResponse) GetPublics() []*GetPublicResponse {
 	return nil
 }
 
-var File_public_proto protoreflect.FileDescriptor
+var File_Public_proto protoreflect.FileDescriptor
 
-var file_public_proto_rawDesc = []byte{
-	0x0a, 0x0c, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06,
+var file_Public_proto_rawDesc = []byte{
+	0x0a, 0x0c, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06,
 	0x76, 0x6f, 0x74, 0x69, 0x6e, 0x67, 0x22, 0xc8, 0x01, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74,
 	0x65, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e,
 	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d,
@@ -567,19 +567,19 @@ var file_public_proto_rawDesc = []byte{
 }
 
 var (
-	file_public_proto_rawDescOnce sync.Once
-	file_public_proto_rawDescData = file_public_proto_rawDesc
+	file_Public_proto_rawDescOnce sync.Once
+	file_Public_proto_rawDescData = file_Public_proto_rawDesc
 )
 
-func file_public_proto_rawDescGZIP() []byte {
-	file_public_proto_rawDescOnce.Do(func() {
-		file_public_proto_rawDescData = protoimpl.X.CompressGZIP(file_public_proto_rawDescData)
+func file_Public_proto_rawDescGZIP() []byte {
+	file_Public_proto_rawDescOnce.Do(func() {
+		file_Public_proto_rawDescData = protoimpl.X.CompressGZIP(file_Public_proto_rawDescData)
 	})
-	return file_public_proto_rawDescData
+	return file_Public_proto_rawDescData
 }
 
-var file_public_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
-var file_public_proto_goTypes = []interface{}{
+var file_Public_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_Public_proto_goTypes = []interface{}{
 	(*CreatePublicRequest)(nil),  // 0: voting.CreatePublicRequest
 	(*VoidPublicResponse)(nil),   // 1: voting.VoidPublicResponse
 	(*ByIdPublicRequest)(nil),    // 2: voting.ByIdPublicRequest
@@ -588,7 +588,7 @@ var file_public_proto_goTypes = []interface{}{
 	(*FilterPublicRequest)(nil),  // 5: voting.FilterPublicRequest
 	(*GetAllPublicResponse)(nil), // 6: voting.GetAllPublicResponse
 }
-var file_public_proto_depIdxs = []int32{
+var file_Public_proto_depIdxs = []int32{
 	3, // 0: voting.GetAllPublicResponse.publics:type_name -> voting.GetPublicResponse
 	0, // 1: voting.PublicService.CreatePublic:input_type -> voting.CreatePublicRequest
 	2, // 2: voting.PublicService.GetByIdPublic:input_type -> voting.ByIdPublicRequest
@@ -607,13 +607,13 @@ var file_public_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_public_proto_init() }
-func file_public_proto_init() {
-	if File_public_proto != nil {
+func init() { file_Public_proto_init() }
+func file_Public_proto_init() {
+	if File_Public_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_public_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_Public_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreatePublicRequest); i {
 			case 0:
 				return &v.state
@@ -625,7 +625,7 @@ func file_public_proto_init() {
 				return nil
 			}
 		}
-		file_public_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_Public_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*VoidPublicResponse); i {
 			case 0:
 				return &v.state
@@ -637,7 +637,7 @@ func file_public_proto_init() {
 				return nil
 			}
 		}
-		file_public_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_Public_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ByIdPublicRequest); i {
 			case 0:
 				return &v.state
@@ -649,7 +649,7 @@ func file_public_proto_init() {
 				return nil
 			}
 		}
-		file_public_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_Public_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetPublicResponse); i {
 			case 0:
 				return &v.state
@@ -661,7 +661,7 @@ func file_public_proto_init() {
 				return nil
 			}
 		}
-		file_public_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_Public_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UpdatePublicRequest); i {
 			case 0:
 				return &v.state
@@ -673,7 +673,7 @@ func file_public_proto_init() {
 				return nil
 			}
 		}
-		file_public_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_Public_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FilterPublicRequest); i {
 			case 0:
 				return &v.state
@@ -685,7 +685,7 @@ func file_public_proto_init() {
 				return nil
 			}
 		}
-		file_public_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_Public_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetAllPublicResponse); i {
 			case 0:
 				return &v.state
@@ -702,18 +702,18 @@ func file_public_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_public_proto_rawDesc,
+			RawDescriptor: file_Public_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_public_proto_goTypes,
-		DependencyIndexes: file_public_proto_depIdxs,
-		MessageInfos:      file_public_proto_msgTypes,
+		GoTypes:           file_Public_proto_goTypes,
+		DependencyIndexes: file_Public_proto_depIdxs,
+		MessageInfos:      file_Public_proto_msgTypes,
 	}.Build()
-	File_public_proto = out.File
-	file_public_proto_rawDesc = nil
-	file_public_proto_goTypes = nil
-	file_public_proto_depIdxs = nil
+	File_Public_proto = out.File
+	file_Public_proto_rawDesc = nil
+	file_Public_proto_goTypes = nil
+	file_Public_proto_depIdxs = nil
 }
