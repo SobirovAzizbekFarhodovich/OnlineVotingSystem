@@ -1,3 +1,0 @@
-DELETE FROM public;
-
-DELETE FROM party;
